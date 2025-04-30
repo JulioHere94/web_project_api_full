@@ -1,0 +1,50 @@
+.header{
+  max-width: 880px;
+  margin: 45px auto 40px;
+}
+
+.header__horizontal-line{
+  width: 100%;
+  border: 1px solid #545454;
+  margin-top: 41px;
+}
+
+.header__logout{
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 920px){
+  .header{
+    margin:45px;
+  }
+}
+
+@media screen and (max-width: 624px){
+  .header{
+    width: 300x;
+    margin:20px;
+    margin: 0;
+  }
+
+  .header__logo{
+    margin-top: 28px;
+    width: 126px;
+    margin-left: 27px;
+  }
+
+  .header__horizontal-line{
+    width: 99%;
+    margin: 32px auto 42px;
+  }
+}
+
+.form__input_type_error {
+  border-bottom-color: red;
+}
+
+.header__email{
+  margin-right: 56px;
+}

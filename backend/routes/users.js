@@ -1,7 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
-const { login } = require("../controllers/users");
+const { login, getCurrentUser } = require("../controllers/users");
+const auth = require("../middlewares/auth"); // Importe o middleware de autenticação
 
 const router = express.Router();
 
@@ -16,6 +17,9 @@ router.get("/", async (req, res) => {
       .json({ message: "Erro ao buscar usuários", error: error.message });
   }
 });
+
+// Rota GET /users/me - Retorna informações do usuário atual
+router.get("/me", getCurrentUser);
 
 // Rota GET /users/:userId - Retorna um usuário específico
 router.get("/:userId", async (req, res) => {
@@ -33,12 +37,12 @@ router.get("/:userId", async (req, res) => {
 });
 
 // Rota PATCH /users/me - Atualiza o perfil do usuário
-router.patch("/me", async (req, res) => {
+router.patch("/me", auth, async (req, res) => {
   try {
     const { name, about } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
-      req.user._id,
+      req.user._id, // Use o ID do usuário autenticado
       { name, about },
       { new: true, runValidators: true }
     ).orFail(() => {

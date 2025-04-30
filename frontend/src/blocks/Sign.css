@@ -1,0 +1,249 @@
+* {
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+  background-color: #000; /* Cor de fundo preta */
+}
+
+header {
+  width: 880px;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 12px;
+  vertical-align: top;
+  margin-left: 4px;
+  color: #aaa;
+}
+
+.login-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+main {
+  margin-top: 0; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  width: 100%;
+  height: 100vh; 
+}
+
+main h1 {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.form_sign {
+  display: flex;
+  flex-direction: column;
+  width: 358px;
+}
+
+.form__title {
+  color: #fff;
+  margin-top: 60px;
+  align-self: center;
+  margin-bottom: 50px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.form_sign input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.form_sign input:focus {
+  outline: none;
+  border-bottom: 1px solid #888;
+}
+
+.form_sign button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 216px;
+}
+
+.login-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ccc;
+  font-weight: 400;
+}
+
+.login-text a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.form__text {
+  color: #fff;
+  align-self: center;
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.header__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.form__link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.form__link:hover {
+  opacity: 60%;
+}
+
+/* PopUp*/
+.info-tooltip-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Certifique-se de que o overlay fique acima de outros elementos */
+}
+
+dialog[open] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* escurece o fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+.info-tooltip {
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 470px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o tooltip */
+  display: grid;
+  grid-template-areas:
+    ". button"
+    "form .";
+}
+
+.info-tooltip__content {
+  width: 430px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  grid-area: form;
+}
+
+.info-tooltip__message {
+  width: 83.25%;
+  font-size: 24px;
+  margin-top: 32px;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+}
+
+.info-tooltip__close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  grid-area: button;
+}
+
+.info-tooltip__close-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1040px) {
+  .info-tooltip {
+    width: 282px;
+    height: 322px;
+  }
+
+  header {
+    width: 85%; /* Ajusta a largura para ocupar toda a tela */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+
+  }
+
+  .logo {
+    font-size: 20px; /* Reduz o tamanho da fonte */
+  }
+
+  .subtitle {
+    font-size: 10px; /* Reduz o tamanho da fonte */
+  }
+
+  .login-link {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  dialog[open] {
+    width: 95%; /* Ajusta para telas menores */
+    padding: 15px; /* Reduz o padding */
+  }
+
+  .info-tooltip__content{
+    width: 280px;
+  }
+
+  .info-tooltip__message {
+    margin-bottom: 0;
+    font-size: 18px; /* Reduz o tamanho da fonte para telas menores */
+  }
+
+}

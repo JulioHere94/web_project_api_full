@@ -1,0 +1,138 @@
+.profile{
+  display: flex;
+  justify-content: center;
+}
+
+.Profile__image{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: background-image 0.3s ease;
+  display: block;
+}
+
+.profile-Info{
+  list-style: none;
+  display: grid;
+  column-gap: 18px;
+  padding-left: 30px;
+  padding-right: 165px;
+  grid-template-areas:
+  "name button"
+  "sub-name .";
+  width: 100%;
+  max-width: 425px;
+
+}
+
+.profile-Info_name{
+  grid-area: name;
+  font-size: 2.62rem;
+  line-height: 1.14;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-Info_sub-title {
+  grid-area: sub-name;
+  font-size: 1.13rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-Info__button{
+  grid-area: button;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  cursor: pointer;
+}
+
+.profile-Info__button:hover{
+  opacity: 50%;
+}
+
+.profile__Button-Add{
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
+}
+
+.profile__Button-Add:hover{
+  opacity: 50%;
+}
+
+@media screen and (max-width: 920px){
+  .profile{
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .profile-Info{
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 624px){
+  .profile{
+    flex-direction: column;
+    align-items: center;
+    margin-top: 42px;
+  }
+
+
+  .profile-Info{
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .profile-Info_name{
+    font-size: 1.375rem;
+  }
+
+  .profile-Info_sub-title {
+  font-size: 0.875rem;
+  text-align: center;
+  }
+
+  .profile__Button-Add{
+    width: 282px;
+  }
+}
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-icon {
+          width: 26px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px; /* ajuste conforme necessário */
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        .profile-container:hover .Profile__image {
+            filter: brightness(50%);
+        }
+        .profile-container:hover .profile-icon {
+            opacity: 1;
+        }
+
+

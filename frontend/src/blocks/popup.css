@@ -1,0 +1,296 @@
+.popup{
+  flex-direction: column;
+  background: transparent;
+  border: none;
+}
+
+.popup::backdrop{
+  background-color: rgba(0,0,0,0.6);
+}
+
+.popup__button-cancel{
+  background: transparent;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  grid-area: button;
+  }
+
+.popup__button-cancel:hover{
+  opacity: 50%;
+}
+
+.popup_rectangle{
+  display: grid;
+  padding: 0;
+  background-color: transparent;
+  grid-template-areas:
+  ". button"
+  "form .";
+
+}
+
+.popup__container{
+  padding-bottom: 36.51px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-top: 34px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 2%;
+  grid-area: form;
+  max-width: 362px;
+  overflow: hidden; /* Evita que o conteúdo extravase */
+}
+
+.container__title{
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.container__imput{
+  width: 358px;
+  height: 27.26px;
+border-bottom: solid 1px #000;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.input-name{
+  margin-top: 54px;
+  margin-bottom: 29.74px;
+  }
+
+  .input__sub-name{
+    margin-bottom: 48px;
+  }
+
+  .container__button{
+    line-height: 1.21rem;
+    font-weight: 400;
+    color: white;
+    width: 358px;
+    min-height: 50.15px;
+    background-color: #000000;
+    cursor: pointer;
+  }
+
+  .container__button:hover{
+    opacity: 80%;
+  }
+
+
+  @media screen and (max-width: 624px){
+    .popup__container{
+      width: 230px;
+      height: 278px;
+      padding: 22px 25px;
+      }
+
+     .container__imput{
+      width: 232px;
+      height: 26px;
+  }
+
+  .container__button{
+    width: 232px;
+    height: 46px;
+  }
+
+  .popup_rectangle{
+  display: flex;
+  flex-direction: column;
+  row-gap: 13.62px;
+  }
+
+  .popup__button-cancel{
+    width: 26px;
+  }
+
+  .popup{
+    margin: auto;
+  }
+
+  .popup__element_img{
+    max-width: 75vw;
+    max-height: 75vh;
+  }
+
+  .popup__img-button-cancel{
+    width: 30px;
+  }
+
+  .popup__button-cancel-image{
+    width: 26px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+  display: none; /* Inicialmente invisível */
+  z-index: 999; /* Fica atrás do pop-up */
+}
+
+.popup__element{
+  z-index: 11;
+  border: none;
+  background-color: transparent;
+}
+
+.popup__img-button-cancel{
+  background: transparent;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  grid-area: button;
+}
+
+.popup__img-button-cancel:hover {
+  opacity: 50%;
+}
+
+.input-title{
+  margin-top: 54px;
+  margin-bottom: 29.74px;
+  }
+
+  .input__link{
+    margin-bottom: 48px;
+  }
+
+  .popup__element::backdrop{
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  .popup__element_img{
+    max-width: 75vw;
+    max-height: 75vh;
+    border: none;
+  }
+
+  .popup__element_title{
+    color: white;
+    font-size: 12px;
+    line-height: 1.21;
+    font-weight: 400;
+    font-family: "Inter";
+  }
+
+  .popup_element-rectangle{
+    display: grid;
+    padding: 0;
+    background-color: transparent;
+    grid-template-areas:
+    ". button"
+    "form .";
+  }
+
+  .popup__container-element{
+    grid-area: form;
+  }
+
+  .form__field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 31.34px;
+  }
+
+  .form__input{
+    margin-bottom: 0px;
+  }
+
+  .form__input-error{
+    font-family: "Inter";
+    font-size: 12px;
+    line-height: 1.21;
+    color: #FF0000;
+    margin-top: 5px;
+  }
+
+  .form__input_type_error {
+    border-bottom: 1px solid red;
+    transition: border-color 0.3s ease; /* Faz a borda mudar suavemente */
+    box-sizing: border-box;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  }
+
+  .form__button_disabled {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+
+  .popup-delete{
+    z-index: 20;
+    position: fixed;
+    left: 0%;
+    width: 470px;
+    height: 230px;
+    padding-top: 0px;
+  }
+
+  .form__delete{
+    padding-top: 0px;
+    border-radius: 10px;
+  }
+
+  .button__delete{
+    margin-top: 38px;
+    width: 358px;
+    height: 50px;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+  }
+
+  .title__delete{
+    margin-top: 34px;
+  }
+
+  .popup-delete::backdrop{
+    background-color: rgba(0,0,0,0.6);
+  }
+
+
+  .popup__image-perfil1{
+    z-index: 20;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding-top: 0px;
+  }
+
+  .form__change{
+    padding-top: 0px;
+    border-radius: 10px;
+  }
+
+  .button__change{
+    margin-top: 16.66px;
+    width: 358px;
+    height: 50px;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+  }
+
+  .title__change{
+    margin-top: 34px;
+    margin-bottom: 54px;
+  }
+
+  .popup-change::backdrop{
+    background-color: rgba(0,0,0,0.6);
+  }

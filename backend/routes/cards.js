@@ -1,5 +1,6 @@
 const express = require("express");
 const Card = require("../models/card");
+const { validateCardCreation } = require("../utils/validators");
 
 const router = express.Router();
 
@@ -16,17 +17,14 @@ router.get("/", async (req, res) => {
 });
 
 // Rota para criar um novo cartão
-router.post("/", async (req, res) => {
+router.post("/", validateCardCreation, async (req, res, next) => {
   try {
     const { name, link } = req.body;
-    const owner = req.user._id; // Supondo que o middleware de autenticação adiciona o objeto user à requisição
-
+    const owner = req.user._id;
     const newCard = await Card.create({ name, link, owner });
     res.status(201).json(newCard);
   } catch (error) {
-    res
-      .status(400)
-      .json({ message: "Erro ao criar cartão", error: error.message });
+    next(error);
   }
 });
 
@@ -75,12 +73,19 @@ router.delete("/:cardId", async (req, res) => {
   try {
     const { cardId } = req.params;
 
-    const deletedCard = await Card.findByIdAndDelete(cardId).orFail(() => {
+    const card = await Card.findById(cardId).orFail(() => {
       const error = new Error("Cartão não encontrado");
       error.statusCode = 404;
       throw error;
     });
 
+    if (card.owner.toString() !== req.user._id) {
+      return res
+        .status(403)
+        .json({ message: "Você não tem permissão para excluir este cartão" });
+    }
+
+    const deletedCard = await Card.findByIdAndDelete(cardId);
     res.json({ message: "Cartão deletado com sucesso", card: deletedCard });
   } catch (error) {
     const statusCode = error.statusCode || 500;

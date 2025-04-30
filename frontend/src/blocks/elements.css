@@ -1,0 +1,96 @@
+.elements__container{
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  column-gap: 17px;
+  row-gap: 21px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+.element {
+  display: grid;
+  background-color: #ffffff;
+  color: black;
+  grid-template-areas:
+    "image image"
+    "title like";
+  border-radius: 5%;
+  width: 282px;
+  height: 361px;
+  position: relative;
+  overflow: hidden
+}
+
+.element_image{
+  grid-area: image;
+  width: 282px;
+  height: 282px;
+  z-index: 1;
+}
+
+
+.element_paragraph{
+  width: 222px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  grid-area: title;
+  align-self: center;
+  text-align: left;
+  padding-left: 23px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.element__button{
+  background-color: transparent;
+  border: none;
+  grid-area: like;
+  align-self: center;
+  text-align: end;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+.element__button:hover{
+  opacity: 50%;
+}
+
+@media screen and (max-width: 920px){
+  .elements__container{
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+@media screen and (max-width: 624px){
+  .elements__container{
+    grid-template-columns: repeat(1, 282px);
+  }
+}
+
+.element__button-trash {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  z-index: 10;
+}
+
+.element_button-image-trash {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.element__button-trash:hover {
+  opacity: 60%;
+}
+
+.element__image{
+  cursor: pointer;
+  display: contents;
+}
