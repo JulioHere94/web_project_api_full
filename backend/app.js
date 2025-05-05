@@ -49,33 +49,9 @@ app.post("/signup", createUser); // Rota para registro
 // Registre as rotas de usuários
 app.use("/users", auth, userRoutes);
 
-// Importa os módulos de rotas
-const cardsRoute = require("./routes/cards");
-
-// Define as rotas base para cada módulo
-app.use("/cards", auth, cardsRoute);
-
-// Middleware para lidar com rotas inexistentes
-app.use((req, res) => {
-  res.status(404).send({ message: "Resource not found" });
-});
-
-// Middleware para lidar com erros de validação
+// Tratamento de erros
 app.use(errors());
-
-// Middleware de tratamento de erros centralizado
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-
-  logger.error({
-    message,
-    statusCode,
-    stack: err.stack,
-  });
-
-  res.status(statusCode).send({
-    message: statusCode === 500 ? "Erro interno no servidor" : message,
-  });
+  const { statusCode = HttpStatus.INTERNAL_SERVER_ERROR, message } = err;
+  res.status(statusCode).send({ message });
 });
-
-module.exports = app;
