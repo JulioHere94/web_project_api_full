@@ -9,6 +9,7 @@ const cors = require("cors");
 const { errors } = require("celebrate");
 const logger = require("./utils/logger");
 const fs = require("fs");
+const https = require("https");
 
 const privateKey = fs.readFileSync(
   "/etc/letsencrypt/live/api.aroundus.twilightparadox.com/privkey.pem",
@@ -45,8 +46,8 @@ mongoose
     console.log("✅ Conexão com o MongoDB estabelecida com sucesso");
 
     // Inicia o servidor Express após a conexão com o MongoDB
-    app.listen(PORT, () => {
-      console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    https.createServer(credentials, app).listen(PORT, () => {
+      console.log(`🚀 Servidor HTTPS rodando na porta ${PORT}`);
     });
   })
   .catch((error) => {
