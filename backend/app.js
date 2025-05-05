@@ -8,6 +8,18 @@ const auth = require("./middlewares/auth");
 const cors = require("cors");
 const { errors } = require("celebrate");
 const logger = require("./utils/logger");
+const fs = require("fs");
+
+const privateKey = fs.readFileSync(
+  "/etc/letsencrypt/live/api.aroundus.twilightparadox.com/privkey.pem",
+  "utf8"
+);
+const certificate = fs.readFileSync(
+  "/etc/letsencrypt/live/api.aroundus.twilightparadox.com/fullchain.pem",
+  "utf8"
+);
+
+const credentials = { key: privateKey, cert: certificate };
 
 const app = express();
 app.use(cors()); // Permite requisições de origens diferentes
