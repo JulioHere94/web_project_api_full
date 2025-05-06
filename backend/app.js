@@ -10,15 +10,10 @@ const { errors } = require("celebrate");
 const logger = require("./utils/logger");
 const fs = require("fs");
 const https = require("https");
+const path = require("path");
 
-const privateKey = fs.readFileSync(
-  "/etc/letsencrypt/live/api.aroundus.twilightparadox.com/privkey.pem",
-  "utf8"
-);
-const certificate = fs.readFileSync(
-  "/etc/letsencrypt/live/api.aroundus.twilightparadox.com/fullchain.pem",
-  "utf8"
-);
+const privateKey = fs.readFileSync(path.join(__dirname, "certs", "privkey.pem"), "utf8");
+const certificate = fs.readFileSync(path.join(__dirname, "certs", "fullchain.pem"), "utf8");
 
 const credentials = { key: privateKey, cert: certificate };
 
