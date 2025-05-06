@@ -33,3 +33,5 @@ Este projeto representa a conclusão do curso e consolida conhecimentos fundamen
 ## 🌐 Endereço da Aplicação
 
 A aplicação está disponível no seguinte domínio:
+https://www.aroundus.twilightparadox.com/
+
