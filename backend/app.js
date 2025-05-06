@@ -57,6 +57,13 @@ mongoose
     process.exit(1); // Encerra o processo em caso de falha na conexão
   });
 
+// Teste de falha do servidor
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("O servidor travará agora");
+  }, 0);
+});
+
 // Rotas de autenticação
 app.post("/signin", login); // Rota para login
 app.post("/signup", createUser); // Rota para registro
