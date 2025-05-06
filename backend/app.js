@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { HttpStatus } = require("./enums/http");
 const userRoutes = require("./routes/users");
+const cardRoutes = require("./routes/cards"); // Importe as rotas de cards
 const { login, createUser } = require("./controllers/users"); // Importa os controladores
 const auth = require("./middlewares/auth");
 const cors = require("cors");
@@ -12,8 +13,14 @@ const fs = require("fs");
 const https = require("https");
 const path = require("path");
 
-const privateKey = fs.readFileSync(path.join(__dirname, "certs", "privkey.pem"), "utf8");
-const certificate = fs.readFileSync(path.join(__dirname, "certs", "fullchain.pem"), "utf8");
+const privateKey = fs.readFileSync(
+  path.join(__dirname, "certs", "privkey.pem"),
+  "utf8"
+);
+const certificate = fs.readFileSync(
+  path.join(__dirname, "certs", "fullchain.pem"),
+  "utf8"
+);
 
 const credentials = { key: privateKey, cert: certificate };
 
@@ -56,6 +63,9 @@ app.post("/signup", createUser); // Rota para registro
 
 // Registre as rotas de usuários
 app.use("/users", auth, userRoutes);
+
+// Registre as rotas de cartões
+app.use("/cards", auth, cardRoutes); // Certifique-se de usar o middleware de autenticação
 
 // Tratamento de erros
 app.use(errors());
